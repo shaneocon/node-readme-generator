@@ -1,58 +1,60 @@
 // TODO: Include packages needed for this application
-const fs = require("fs");
 const inquirer = require("inquirer");
-// const axios = require("axios");
-const generate = require("./utils/generateMarkdown");
+const fs = require("fs");
+const util = require("util");
+const generateReadMe = require("./utils/generateMarkdown.js");
+const writeFileAsync = util.promisify(fs.writeFile);
 // TODO: Create an array of questions for user input
-const promptUser = () => 
-    inquirer.prompt([
+function promptUser() { 
+    return inquirer.prompt([
         {
-        type: "input",
-        name: "title",
-        message: "What is your project title?"
+            type: "input",
+            name: "title",
+            message: "What is your project title?",
         },
         {
-        type: "input",
-        name: "description",
-        message: "Please provide a description of your project"
+            type: "input",
+            name: "description",
+            message: "Please provide a description of your project"
         },
         {
-        type: "input",
-        name: "installation",
-        message: "What are your installation instructions?"
+            type: "input",
+            name: "installation",
+            message: "What are your installation instructions?"
         },
         {
-        type: "input",
-        name: "usage",
-        message: "Please provide the project usage"
+            type: "input",
+            name: "usage",
+            message: "Please provide the project usage"
         },
         {
-        type: "checkbox",
-        name: "license",
-        message: "Which license in use?",
-        choices: ["MIT", "Apache", "GPL", "other"]
+            type: "checkbox",
+            name: "license",
+            message: "Which license in use?",
+            choices: ["MIT", "Apache", "GPL", "other"]
         },
         {
-        type: "input",
-        name: "credit",
-        message: "Please name any additional parties to credit"
+            type: "input",
+            name: "credit",
+            message: "Please name any additional parties to credit"
         },
         {
-        type: "input",
-        name: "test",
-        message: "What project tests will be used?"
+            type: "input",
+            name: "test",
+            message: "What project tests will be used?"
         },
         {
-        type: "input",
-        name: "username",
-        message: "What is your Github username?"
+            type: "input",
+            name: "username",
+            message: "What is your Github username?"
         },
         {
-        type: "input",
-        name: "email",
-        message: "What is your email address?"
+            type: "input",
+            name: "email",
+            message: "What is your email address?"
         },
-]);
+    ]);
+}
 
 
 
@@ -73,15 +75,24 @@ const promptUser = () =>
 // THEN I am taken to the corresponding section of the README
 
 // TODO: Create a function to write README file
-// function writeToFile(fileName, data) {}
-// fs.writeFile("./output/README.md", "This is the generated readme", (err) => {
-//     console.log("All Done!")
-// })
+function writeToFile(fileName, data) {
+fs.writeFile(fileName, data, (err) => {
+    if (err) {
+    } else {
+    console.log("All Done!")
+    }
+    });
+}
+
 
 
 // TODO: Create a function to initialize app
-function init() {
-    writeToFile();
+function promisify() {
+    promptUser().then((data) => {
+        console.log(data);
+       
+    })
+    writeToFile(`./utils/generateMarkdown.js`, readMe);
 }
 
 // Function call to initialize app

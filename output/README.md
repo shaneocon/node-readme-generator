@@ -1,9 +1,9 @@
 
-  # __hello__
+  # __Hello Project__
 
   ## Description
 
-  yes
+  hello
 
   ## Table of Contents
 
@@ -18,36 +18,36 @@
 
   ## Installation
 
-  hello
+  None
 
   ## Usage
 
-  yes
+  None
 
 
   ## Credits
 
-  hello
+  My cat, Janis 
 
   ## Test
 
-  yes
+  None
 
   ## Github
 
-  undefined
+  shaneocon
 
   ## Email
 
-  yes@hello.com
+  shane.pat.oconnell@gmail.com
 
   ## License
 
-  ![badge](https://img.shields.io/badge/license-MIT-red)
+  ![badge](https://img.shields.io/badge/license-Apache-red)
   <br>
-  This app is under the MIT license
+  This app is under the Apache license
   <br>
-  Github Profile: [helly](https://github.com/helly)
+  Github Profile: [shaneocon](https://github.com/shaneocon)
   <br>
-  Email me @: yes@hello.com
+  Email me @: shane.pat.oconnell@gmail.com
   <br><br>

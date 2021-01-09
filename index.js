@@ -4,54 +4,123 @@ const fs = require("fs");
 const util = require("util");
 const generateReadMe = require("./utils/generateMarkdown.js");
 const writeFileAsync = util.promisify(fs.writeFile);
-// TODO: Create an array of questions for user input
+
 function promptUser() { 
     return inquirer.prompt([
         {
             type: "input",
             name: "title",
             message: "What is your project title?",
+            validate: (value) => {
+                if (value) {
+                    return true;
+                } else {
+                return "Name your project! Name it!";
+                }
+            }
         },
         {
             type: "input",
             name: "description",
-            message: "Please provide a description of your project"
+            message: "Please provide a description of your project",
+            validate: (value) => {
+                if (value) {
+                    return true;
+                } else {
+                return "Just a few words will do.";
+                }
+            }
         },
         {
             type: "input",
             name: "installation",
-            message: "What are your installation instructions?"
+            message: "What are your installation instructions?",
+            validate: (value) => {
+                if (value) {
+                    return true;
+                } else {
+                return "Wait, could you add a few steps of instruction, please?";
+                }
+            }
         },
         {
             type: "input",
             name: "usage",
-            message: "Please provide the project usage"
+            message: "Please provide the project usage",
+            validate: (value) => {
+                if (value) {
+                    return true;
+                } else {
+                return "Again, just a few words will do.";
+                }
+            }
         },
         {
-            type: "checkbox",
+            type: "list",
             name: "license",
-            message: "Which license in use?",
-            choices: ["MIT", "Apache", "GPL", "other"]
+            message: "Which license is in use for this project?",
+            choices: [
+                "MIT", 
+                "Apache", 
+                "GPL", 
+                "Mozilla", 
+                "Other"
+            ],
+            validate: (value) => {
+                if (value) {
+                    return true;
+                } else {
+                return "Select a license. If you do not have a license, well, okay that's fine. ";
+                }
+            }
         },
         {
             type: "input",
             name: "credit",
-            message: "Please name any additional parties to credit"
+            message: "Please name any additional parties to credit",
+            validate: (value) => {
+                if (value) {
+                    return true;
+                } else {
+                return "Input [n/a] if none.";
+                }
+            }
         },
         {
             type: "input",
             name: "test",
-            message: "What project tests will be used?"
+            message: "What project tests will be used?",
+            validate: (value) => {
+                if (value) {
+                    return true;
+                } else {
+                return "Input [n/a] if none.";
+                }
+            }
         },
         {
             type: "input",
             name: "username",
-            message: "What is your Github username?"
+            message: "What is your Github username?",
+            validate: (value) => {
+                if (value) {
+                    return true;
+                } else {
+                return "Git yerselfa Github if'n' youse find yerself without";
+                }
+            }
         },
         {
             type: "input",
             name: "email",
-            message: "What is your email address?"
+            message: "What is your email address?",
+            validate: (value) => {
+                if (value) {
+                    return true;
+                } else {
+                return "Quaaaid, start the reactor!";
+                }
+            }
         },
     ]);
 }
@@ -75,19 +144,19 @@ function promptUser() {
 // THEN I am taken to the corresponding section of the README
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-fs.writeFile(fileName, data, (err) => {
-    if (err) {
-    } else {
-    console.log("All Done!")
-    }
-    });
-}
+// function writeToFile(fileName, data) {
+// fs.writeFile(fileName, data, (err) => {
+//     if (err) {
+//     } else {
+//     console.log("All Done!")
+//     }
+//     });
+// }
 
 
 
 // TODO: Create a function to initialize app
-function promisify() {
+async function promisify() {
     promptUser().then((data) => {
         console.log(data);
        
